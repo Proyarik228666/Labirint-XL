@@ -53,22 +53,23 @@ class Wall(sprite.Sprite):
     def draw_wall(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
 
-win_width = 1200
-win_height = 1000
+win_width = 900
+win_height = 800
 window = display.set_mode((win_width, win_height))
 display.set_caption("Лабиринт")
 background = transform.scale(image.load("background.jpg"), (win_width, win_height))
 
 player = Player('hero.png', 5, win_height - 80, 4)
-monster = Enemy('cyborg.png', win_width - 20, 280, 5)
+monster1 = Enemy('cyborg.png', win_width - 20, 280, 5)
 monster2 = Enemy('cyborg.png', win_width - 150, 300, 5)
 monster3 = Enemy('cyborg.png', win_width - 600, 320, 5)
 final = GameSpite('treasure.png', win_width - 100, 50, 0)
 
-w1 = Wall(154, 205, 50, 100, 20, 1000, 20)
-w2 = Wall(154, 205, 50, 100, 950, 1000, 20)
-w3 = Wall(154, 205, 50, 1100, 120, 20, 850)
-w4 = Wall(154, 205, 50, 100, 20, 20, 850)
+w1 = Wall(154, 205, 50, 100, 20, 650, 20)
+w2 = Wall(154, 205, 50, 100, 750, 650, 20)
+w3 = Wall(154, 205, 50, 750, 120, 20, 600)
+w4 = Wall(154, 205, 50, 100, 20, 20, 700)
+
 
 game = True
 finish = False
@@ -95,12 +96,12 @@ while game:
     if finish != True:
         window.blit(background, (0, 0))
         player.update()
-        monster.update()
+        monster1.update()
         monster2.update()
         monster3.update()
 
         player.reset()
-        monster.reset()
+        monster1.reset()
         monster2.reset()
         monster3.reset()
         final.reset()
@@ -110,9 +111,9 @@ while game:
         w3.draw_wall()
         w4.draw_wall()
 
-        if sprite.collide_rect(player, monster) or sprite.collide_rect(player, w1) or sprite.collide_rect(player, w2) or sprite.collide_rect(player, w3):
+        if sprite.collide_rect(player, monster1) or sprite.collide_rect(player, monster2) or sprite.collide_rect(player, monster3) or sprite.collide_rect(player, w1) or sprite.collide_rect(player, w2) or sprite.collide_rect(player, w3):
             finish = True
-            window.blit(lose, (250, 500))
+            window.blit(lose, (250, 250))
             kick.play()
         if sprite.collide_rect(player, final):
             finish = True
