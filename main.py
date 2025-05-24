@@ -65,10 +65,16 @@ monster2 = Enemy('cyborg.png', win_width - 150, 300, 5)
 monster3 = Enemy('cyborg.png', win_width - 600, 320, 5)
 final = GameSpite('treasure.png', win_width - 100, 50, 0)
 
-w1 = Wall(154, 205, 50, 100, 20, 650, 20)
+w1 = Wall(154, 205, 50, 100, 20, 675, 20)
 w2 = Wall(154, 205, 50, 100, 750, 650, 20)
-w3 = Wall(154, 205, 50, 750, 120, 20, 600)
-w4 = Wall(154, 205, 50, 100, 20, 20, 700)
+w3 = Wall(154, 205, 50, 750, 120, 20, 650)
+w4 = Wall(154, 205, 50, 100, 20, 20, 650)
+w5 = Wall(154, 205, 50, 200, 120, 20, 550)
+w6 = Wall(154, 205, 50, 200, 120, 450, 20)
+w7 = Wall(154, 205, 50, 630, 20, 20, 100)
+w8 = Wall(154, 205, 50, 200, 650, 150, 20)
+w9 = Wall(154, 205, 50, 450, 650, 200, 20)
+w10 = Wall(154, 205, 50, 450, 650, 20, 200)
 
 
 game = True
@@ -110,14 +116,19 @@ while game:
         w2.draw_wall()
         w3.draw_wall()
         w4.draw_wall()
+        w5.draw_wall()
+        w6.draw_wall()
+        w7.draw_wall()
+        w8.draw_wall()
+        w9.draw_wall()
 
-        if sprite.collide_rect(player, monster1) or sprite.collide_rect(player, monster2) or sprite.collide_rect(player, monster3) or sprite.collide_rect(player, w1) or sprite.collide_rect(player, w2) or sprite.collide_rect(player, w3):
+        if sprite.collide_rect(player, monster1) or sprite.collide_rect(player, monster2) or sprite.collide_rect(player, monster3) or sprite.collide_rect(player, w1) or sprite.collide_rect(player, w2) or sprite.collide_rect(player, w3) or sprite.collide_rect(player, w4) or sprite.collide_rect(player, w5) or sprite.collide_rect(player, w6) or sprite.collide_rect(player, w7) or sprite.collide_rect(player, w8) or sprite.collide_rect(player, w9):
             finish = True
-            window.blit(lose, (250, 250))
+            window.blit(lose, (100, 350))
             kick.play()
         if sprite.collide_rect(player, final):
             finish = True
-            window.blit(win, (250, 500))
+            window.blit(win, (100, 350))
             money.play()
     display.update()
     clock.tick(FPS)
