@@ -59,10 +59,10 @@ window = display.set_mode((win_width, win_height))
 display.set_caption("Лабиринт")
 background = transform.scale(image.load("background.jpg"), (win_width, win_height))
 
-player = Player('hero.png', 5, win_height - 80, 4)
-monster1 = Enemy('cyborg.png', win_width - 20, 280, 5)
-monster2 = Enemy('cyborg.png', win_width - 150, 300, 5)
-monster3 = Enemy('cyborg.png', win_width - 600, 320, 5)
+player = Player('hero.png', 5, win_width - 80, 4)
+monster1 = Enemy('cyborg.png', 500, 500, 25)
+monster2 = Enemy('cyborg.png', 350, 200, 15)
+monster3 = Enemy('cyborg.png', 200, 100, 20)
 final = GameSpite('treasure.png', win_width - 100, 50, 0)
 
 w1 = Wall(154, 205, 50, 100, 20, 675, 20)
@@ -74,7 +74,13 @@ w6 = Wall(154, 205, 50, 200, 120, 450, 20)
 w7 = Wall(154, 205, 50, 630, 20, 20, 100)
 w8 = Wall(154, 205, 50, 200, 650, 150, 20)
 w9 = Wall(154, 205, 50, 450, 650, 200, 20)
-w10 = Wall(154, 205, 50, 450, 650, 20, 200)
+w10 = Wall(154, 205, 50, 630, 370, 20, 300)
+w11 = Wall(154, 205, 50, 630, 370, 120, 20)
+w12 = Wall(154, 205, 50, 450, 220, 300, 20)
+w13 = Wall(154, 205, 50, 200, 220, 120, 20)
+w14 = Wall(154, 205, 50, 300, 230, 20, 300)
+w15 = Wall(154, 205, 50, 300, 530, 150, 20)
+w16 = Wall(154, 205, 50, 530, 220, 20, 330)
 
 
 game = True
@@ -121,8 +127,15 @@ while game:
         w7.draw_wall()
         w8.draw_wall()
         w9.draw_wall()
+        w10.draw_wall()
+        w11.draw_wall()
+        w12.draw_wall()
+        w13.draw_wall()
+        w14.draw_wall()
+        w15.draw_wall()
+        w16.draw_wall()
 
-        if sprite.collide_rect(player, monster1) or sprite.collide_rect(player, monster2) or sprite.collide_rect(player, monster3) or sprite.collide_rect(player, w1) or sprite.collide_rect(player, w2) or sprite.collide_rect(player, w3) or sprite.collide_rect(player, w4) or sprite.collide_rect(player, w5) or sprite.collide_rect(player, w6) or sprite.collide_rect(player, w7) or sprite.collide_rect(player, w8) or sprite.collide_rect(player, w9):
+        if sprite.collide_rect(player, monster1) or sprite.collide_rect(player, monster2) or sprite.collide_rect(player, monster3) or sprite.collide_rect(player, w1) or sprite.collide_rect(player, w2) or sprite.collide_rect(player, w3) or sprite.collide_rect(player, w4) or sprite.collide_rect(player, w5) or sprite.collide_rect(player, w6) or sprite.collide_rect(player, w7) or sprite.collide_rect(player, w8) or sprite.collide_rect(player, w9) or sprite.collide_rect(player, w10) or sprite.collide_rect(player, w11) or sprite.collide_rect(player, w12) or sprite.collide_rect(player, w13) or sprite.collide_rect(player, w14) or sprite.collide_rect(player, w15) or sprite.collide_rect(player, w16):
             finish = True
             window.blit(lose, (100, 350))
             kick.play()
